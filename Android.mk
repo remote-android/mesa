@@ -42,8 +42,8 @@ MESA_DRI_MODULE_UNSTRIPPED_PATH := $(TARGET_OUT_SHARED_LIBRARIES_UNSTRIPPED)/$(M
 MESA_DRI_LDFLAGS := -Wl,--build-id=sha1
 
 MESA_COMMON_MK := $(MESA_TOP)/Android.common.mk
-MESA_PYTHON2 := python
-MESA_PYTHON3 := python3
+MESA_PYTHON2 := /usr/bin/python
+MESA_PYTHON3 := /usr/bin/python3
 ifeq ($(filter 5 6 7 8 9 10, $(MESA_ANDROID_MAJOR_VERSION)),)
 MESA_LEX     := M4=$(M4) $(LEX)
 else
@@ -97,8 +97,8 @@ endif
 define mesa-build-with-llvm
   $(if $(filter $(MESA_ANDROID_MAJOR_VERSION), 4 5 6 7), \
     $(warning Unsupported LLVM version in Android $(MESA_ANDROID_MAJOR_VERSION)),) \
-  $(eval LOCAL_CFLAGS += -DLLVM_AVAILABLE -DDRAW_LLVM_AVAILABLE -DLLVM_IS_SHARED=1 -DMESA_LLVM_VERSION_STRING=\"3.9\") \
-  $(eval LOCAL_SHARED_LIBRARIES += libLLVM)
+  $(eval LOCAL_CFLAGS += -DLLVM_AVAILABLE -DDRAW_LLVM_AVAILABLE -DLLVM_IS_SHARED=1 -DMESA_LLVM_VERSION_STRING=\"12.0\") \
+  $(eval LOCAL_SHARED_LIBRARIES += libLLVM12)
 endef
 
 # add subdirectories
