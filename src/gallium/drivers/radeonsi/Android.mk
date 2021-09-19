@@ -55,9 +55,6 @@ LOCAL_GENERATED_SOURCES := $(MESA_GEN_NIR_H)
 
 $(call mesa-build-with-llvm)
 
-include $(GALLIUM_COMMON_MK)
-include $(BUILD_STATIC_LIBRARY)
-
 ifneq ($(HAVE_GALLIUM_RADEONSI),)
 GALLIUM_TARGET_DRIVERS += radeonsi
 $(eval GALLIUM_LIBS += \
@@ -67,5 +64,8 @@ $(eval GALLIUM_LIBS += \
 	libmesa_winsys_amdgpu)
 $(eval GALLIUM_SHARED_LIBS += $(LOCAL_SHARED_LIBRARIES))
 endif
+
+include $(GALLIUM_COMMON_MK)
+include $(BUILD_STATIC_LIBRARY)
 
 endif # MESA_ENABLE_LLVM==true

@@ -41,12 +41,12 @@ LOCAL_MODULE := libmesa_winsys_amdgpu
 
 $(call mesa-build-with-llvm)
 
-include $(GALLIUM_COMMON_MK)
-include $(BUILD_STATIC_LIBRARY)
-
 ifneq ($(HAVE_GALLIUM_RADEONSI),)
 $(eval GALLIUM_LIBS += $(LOCAL_MODULE) $(LOCAL_STATIC_LIBRARIES))
 $(eval GALLIUM_SHARED_LIBS += $(LOCAL_SHARED_LIBRARIES))
 endif
+
+include $(GALLIUM_COMMON_MK)
+include $(BUILD_STATIC_LIBRARY)
 
 endif # MESA_ENABLE_LLVM==true

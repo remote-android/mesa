@@ -71,4 +71,4 @@ LOCAL_SRC_FILES := \
 	program/dummy_errors.c
 
 include $(MESA_COMMON_MK)
-include $(BUILD_HOST_STATIC_LIBRARY)
+#include $(BUILD_HOST_STATIC_LIBRARY)
